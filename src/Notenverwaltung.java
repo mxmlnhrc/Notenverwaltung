@@ -37,6 +37,9 @@ public class Notenverwaltung extends JFrame {
 
         inputPanel.add(new JLabel("Note:"));
         tfnote = new JTextField(5);
+        tfnote.addActionListener(e -> {
+            addStudent(); // Methode aufrufen, wenn Enter gedrückt wird
+        });
         inputPanel.add(tfnote);
 
         btnsubmit = new JButton("Hinzufügen");
