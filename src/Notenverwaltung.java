@@ -49,7 +49,12 @@ public class Notenverwaltung extends JFrame {
 
         add(inputPanel, BorderLayout.NORTH);
 
-        tblmodel = new DefaultTableModel(new String[]{"Name", "Note"}, 0);
+        tblmodel = new DefaultTableModel(new String[]{"Name", "Note"}, 0) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false; // Verhindert das Bearbeiten von Zellen
+            }
+        };
         table = new JTable(tblmodel);
         add(new JScrollPane(table), BorderLayout.CENTER);
 
