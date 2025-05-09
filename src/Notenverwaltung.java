@@ -33,6 +33,7 @@ public class Notenverwaltung extends JFrame {
 
         inputPanel.add(new JLabel("Name:"));
         tfname = new JTextField(15);
+        tfname.addActionListener(e -> {tfnote.requestFocus();});
         inputPanel.add(tfname);
 
         inputPanel.add(new JLabel("Note:"));
@@ -76,6 +77,10 @@ public class Notenverwaltung extends JFrame {
         double note;
         try {
             note = Double.parseDouble(noteStr);
+            if (note < 0.0 || note > 6.0) {
+                JOptionPane.showMessageDialog(this, "Bitte eine Note zwischen 1.0 und 6.0 eingeben.");
+                return;
+            }
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Bitte eine gültige Note eingeben.");
             return;
@@ -86,6 +91,8 @@ public class Notenverwaltung extends JFrame {
         tblmodel.addRow(new Object[]{name, note});
         tfname.setText("");
         tfnote.setText("");
+
+        tfname.requestFocus();
 
         updateAverage();
     }
